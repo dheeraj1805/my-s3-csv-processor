@@ -1,43 +1,30 @@
 pipeline {
-    agent any
-    
-    environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
-	 	AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-		AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-	 }
-    }
+	agent any	 
+	
+	
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+     environment {
+    AWS_CREDENTIALS = credentials('AWS_KEY')
+}
 
-        stage('Install Serverless Framework') {
-            steps {
+stages {
+    stage('Deploy') {
+        steps {
+            withCredentials([string(credentialsId: 'AWS_KEY', variable: 'AWS_CREDENTIALS')]) {
                 script {
-                    sh 'npm install -g serverless'
-                }
-            }
-        }
-
-        stage('Deploy Serverless Application') {
-            steps {
-                script {
-                    sh 'serverless deploy --stage production'
+                    def awsCredentials = AWS_CREDENTIALS.split(':')
+                    sh "export AWS_ACCESS_KEY_ID=${awsCredentials[0]}"
+                    sh "export AWS_SECRET_ACCESS_KEY=${awsCredentials[1]}"
+                    // Now you can use $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY in your commands
+                    sh 'serverless deploy'
                 }
             }
         }
     }
+}
 
-    post {
-        success {
-            echo 'Deployment succeeded!'
-        }
-        failure {
-            echo 'Deployment failed.'
-        }
-    }
+	
+	
+	
+
 }
