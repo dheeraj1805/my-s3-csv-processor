@@ -17,7 +17,7 @@ stages {
                     sh "export AWS_SECRET_ACCESS_KEY=${awsCredentials[1]}"
                     // Now you can use $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY in your commands
                     sh 'serverless deploy'
-                    sh 'serverless invoke  --function hell
+                    sh 'serverless invoke  --function hell'
                 }
             }
         }
