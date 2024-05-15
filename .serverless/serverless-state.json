@@ -96,10 +96,10 @@
               }
             }
           },
-          "HelloLogGroup": {
+          "HellLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/my-s3-csv-processor-dev-hello"
+              "LogGroupName": "/aws/lambda/my-s3-csv-processor-dev-hell"
             }
           },
           "IamRoleLambdaExecution": {
@@ -183,18 +183,18 @@
               }
             }
           },
-          "HelloLambdaFunction": {
+          "HellLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-s3-csv-processor/dev/1715714422959-2024-05-14T19:20:22.959Z/my-s3-csv-processor.zip"
+                "S3Key": "serverless/my-s3-csv-processor/dev/1715740850927-2024-05-15T02:40:50.927Z/my-s3-csv-processor.zip"
               },
-              "Handler": "handler.hello",
+              "Handler": "handler.hell",
               "Runtime": "python3.9",
-              "FunctionName": "my-s3-csv-processor-dev-hello",
+              "FunctionName": "my-s3-csv-processor-dev-hell",
               "MemorySize": 1024,
               "Timeout": 6,
               "Role": {
@@ -205,17 +205,17 @@
               }
             },
             "DependsOn": [
-              "HelloLogGroup"
+              "HellLogGroup"
             ]
           },
-          "HelloLambdaVersionbJeJtZbl2JHQfjECJWdkvE7q508dLvuZgk03adL1ijY": {
+          "HellLambdaVersion2xQyrQZudUGir1OURyq33lQXrRpF07oC6P8FeNAUZ78": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "HelloLambdaFunction"
+                "Ref": "HellLambdaFunction"
               },
-              "CodeSha256": "wsZ4gx8s4yV5rytYZ24i0NjxOUxO2w81O3irDjDOn4o="
+              "CodeSha256": "o9/ohC6TP5npoCuHZjwwKtPf6vYU9R7b9eYoFtr/H7o="
             }
           },
           "S3BucketFilesyncs32csv": {
@@ -228,7 +228,7 @@
                     "Event": "s3:ObjectCreated:*",
                     "Function": {
                       "Fn::GetAtt": [
-                        "HelloLambdaFunction",
+                        "HellLambdaFunction",
                         "Arn"
                       ]
                     },
@@ -247,15 +247,15 @@
               }
             },
             "DependsOn": [
-              "HelloLambdaPermissionFilesyncs32csvS3"
+              "HellLambdaPermissionFilesyncs32csvS3"
             ]
           },
-          "HelloLambdaPermissionFilesyncs32csvS3": {
+          "HellLambdaPermissionFilesyncs32csvS3": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "HelloLambdaFunction",
+                  "HellLambdaFunction",
                   "Arn"
                 ]
               },
@@ -288,13 +288,13 @@
               "Name": "sls-my-s3-csv-processor-dev-ServerlessDeploymentBucketName"
             }
           },
-          "HelloLambdaFunctionQualifiedArn": {
+          "HellLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionbJeJtZbl2JHQfjECJWdkvE7q508dLvuZgk03adL1ijY"
+              "Ref": "HellLambdaVersion2xQyrQZudUGir1OURyq33lQXrRpF07oC6P8FeNAUZ78"
             },
             "Export": {
-              "Name": "sls-my-s3-csv-processor-dev-HelloLambdaFunctionQualifiedArn"
+              "Name": "sls-my-s3-csv-processor-dev-HellLambdaFunctionQualifiedArn"
             }
           }
         }
@@ -385,8 +385,8 @@
     },
     "pluginsData": {},
     "functions": {
-      "hello": {
-        "handler": "handler.hello",
+      "hell": {
+        "handler": "handler.hell",
         "events": [
           {
             "s3": {
@@ -400,13 +400,13 @@
             }
           }
         ],
-        "name": "my-s3-csv-processor-dev-hello",
+        "name": "my-s3-csv-processor-dev-hell",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "python3.9",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionbJeJtZbl2JHQfjECJWdkvE7q508dLvuZgk03adL1ijY"
+        "versionLogicalId": "HellLambdaVersion2xQyrQZudUGir1OURyq33lQXrRpF07oC6P8FeNAUZ78"
       }
     },
     "configValidationMode": "warn",
@@ -426,7 +426,7 @@
     "artifact": "D:\\Desktop\\Filesyncservice\\my-s3-csv-processor\\.serverless\\my-s3-csv-processor.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/my-s3-csv-processor/dev/1715714422959-2024-05-14T19:20:22.959Z",
+    "artifactDirectoryName": "serverless/my-s3-csv-processor/dev/1715740850927-2024-05-15T02:40:50.927Z",
     "artifact": "my-s3-csv-processor.zip"
   }
 }
