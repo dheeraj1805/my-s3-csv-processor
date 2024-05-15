@@ -1,0 +1,25 @@
+service: my-s3-csv-processor
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "s3:GetObject"
+          Resource: "arn:aws:s3:::filesyncs32csv/*"
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - s3:
+          bucket: filesyncs32csv
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
