@@ -17,3 +17,4 @@ def hell(event, context):
     for row in csv_reader:
         # Process each row
         print(row)
+        print(hello)
