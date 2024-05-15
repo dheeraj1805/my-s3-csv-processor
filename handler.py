@@ -2,7 +2,7 @@ import boto3
 import csv
 import io
 
-def hello(event, context):
+def hell(event, context):
     # Retrieve bucket and object key from the S3 event
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = event['Records'][0]['s3']['object']['key']

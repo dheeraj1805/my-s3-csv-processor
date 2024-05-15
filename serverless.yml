@@ -15,8 +15,8 @@ provider:
           Resource: "arn:aws:s3:::filesyncs32csv/*"
 
 functions:
-  hello:
-    handler: handler.hello
+  hell:
+    handler: handler.hell
     events:
       - s3:
           bucket: filesyncs32csv
